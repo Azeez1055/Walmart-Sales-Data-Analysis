@@ -1,0 +1,14 @@
+# Convert 'Date' to datetime objects
+df['Date'] = pd.to_datetime(df['Date'], format='%d-%m-%Y')
+
+# Feature engineering
+df['Month'] = df['Date'].dt.month
+df['Year'] = df['Date'].dt.year
+df['DayOfWeek'] = df['Date'].dt.dayofweek # 0 is Monday and 6 is Sunday.
+df['Day_Of_Year'] = df['Date'].dt.dayofyear # day of the year
+
+# Convert Holiday_Flag to boolean
+df['Holiday_Flag'] = df['Holiday_Flag'].astype(bool)
+
+print("\nProcessed Dataframe:\n", df.head())
+print("\nData Types:\n", df.dtypes)
